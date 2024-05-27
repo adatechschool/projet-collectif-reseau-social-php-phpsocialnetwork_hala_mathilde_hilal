@@ -66,7 +66,7 @@
                  */
 
                 // Etape 1: Ouvrir une connexion avec la base de donnée.
-                $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
+                $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
                 //verification
                 if ($mysqli->connect_errno)
                 {
