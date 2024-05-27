@@ -1,0 +1,39 @@
+Goals: 
+Step 1 (MVP) - Afficher les messages utilisateurs.
+
+Step 2 - Utilisateurs doivent pouvoir s'enregistrer-se connecter.
+
+Step 3 - Ajouter les nouveaux messages(pas compris?).
+
+
+Technique :
+1 - Construire des formulaires techniques.
+
+2 - Préparer la récupération et le traitement des infos fournies par les utilisateurs.
+
+3 - Ajouter le principe de "session" => le site doit se souvenir que la personne est connectée.
+
+
+Différents élements à comprendre pour le début :
+1 - Apache est un serveur web capable d’interpréter le PHP dans le HTML.
+
+2 - PHP est le langage de programmation capable de process/manipuler les données que SQL est aller chercher dans MySQL.
+
+3 - SQL est un langage pour communiquer avec la base donnée, aller chercher les données et faire des requêtes.
+
+4 - MySQL est une base de données relationnelle (type de base de données qui organise les données en tables structurées).
+
+
+Bon à savoir :
+1 - Tous les fichiers sont à enregistrer dans htdocs, même le github.
+    Applications ▹ MAMP ▹ htdocs
+
+2 - base de données MySQL phpMyAdmin (Mathilde) 
+    localhost:8886/phpMyAdmin5/ 
+    Apache Port = 8886
+    MySQL Port = 8889
+
+Issues (Mathilde) : 
+1 - MAMP PRO prend port localhost:8888 donc bien supprimer pour installer MAMP classique!
+    => sinon je dois changer le port et je n'ai plus accès au phpMyAdmin => Merci de vérifier les valeurs host.
+2 - 
