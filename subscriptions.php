@@ -1,4 +1,4 @@
-<?php include("config.php")?>
+<?php include("config.php");?>
 <!doctype html>
 <html lang="fr">
     <head>
@@ -52,15 +52,25 @@
                     WHERE followers.following_user_id='$userId'
                     GROUP BY users.id
                     ";
-                $lesInformations = $mysqli->query($laQuestionEnSql);
-                // Etape 4: à vous de jouer
-                //@todo: faire la boucle while de parcours des abonnés et mettre les bonnes valeurs ci dessous 
-                ?>
-                <article>
-                    <img src="user.jpg" alt="blason"/>
-                    <h3>Alexandra</h3>
-                    <p>id:654</p>                    
-                </article>
+                    $lesInformations = $mysqli->query($laQuestionEnSql);
+
+            // Vérifier si la requête a réussi
+            if ($lesInformations) {
+                // Etape 4: parcours des abonnés et affichage des valeurs
+                while ($follower = $lesInformations->fetch_assoc()) {  
+            ?>    
+            <article>
+                <img src="user.jpg" alt="blason"/>
+                <h3><?php echo htmlspecialchars($follower['alias']); ?></h3>
+                <p>id: <?php echo intval($follower['id']); ?></p>                    
+            </article>
+            <?php 
+                }
+            } else {
+                echo "<p>Aucun abonné trouvé.</p>";
+            }
+            ?>
+                
             </main>
         </div>
     </body>
