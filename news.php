@@ -106,11 +106,16 @@
                         </h3>
                         <address><?php echo $post['author_name'] ?></address>
                         <div>
-                            <p><?php echo $post['content'] ?></p>
+                            <!-- ci-dessous on enleve le caractere # du text( content) -->
+                       <?php $cleaned_content = str_replace('#', '', $post['content']);
+    
+                        echo "<p>" . htmlspecialchars($cleaned_content) . "</p>";?>
+
+                        
                         </div>
                         <footer>
                             <small>♥<?php echo $post['like_number'] ?> </small>
-                            <a href=""><?php echo $post['taglist'] ?></a>,
+                            <a href=""><?php echo "#",$post['taglist'] ?></a>,
                         </footer>
                     </article>
                     <?php
