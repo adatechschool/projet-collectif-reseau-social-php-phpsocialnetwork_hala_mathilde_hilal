@@ -1,4 +1,4 @@
-<?php include("config2.php")?>
+<?php include("config.php")?>
 <!doctype html>
 <html lang="fr">
     <head>
