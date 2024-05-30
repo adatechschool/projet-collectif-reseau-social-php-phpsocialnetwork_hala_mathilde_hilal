@@ -23,7 +23,6 @@
                     <li><a href="followers.php?user_id=5">Mes suiveurs</a></li>
                     <li><a href="subscriptions.php?user_id=5">Mes abonnements</a></li>
                 </ul>
-
             </nav>
         </header>
         <div id="wrapper">          
@@ -49,15 +48,25 @@
                     WHERE followers.followed_user_id='$userId'
                     GROUP BY users.id
                     ";
-                $lesInformations = $mysqli->query($laQuestionEnSql);
                 // Etape 4: à vous de jouer
                 //@todo: faire la boucle while de parcours des abonnés et mettre les bonnes valeurs ci dessous 
-                ?>
+                $lesInformations = $mysqli->query($laQuestionEnSql);
+                if ( ! $lesInformations)
+                {
+                    echo("Échec de la requete : " . $mysqli->error);
+                }
+                while ($follower = $lesInformations->fetch_assoc())
+                {
+                  // echo "<pre>" . print_r($follower, 5) . "</pre>";
+                ?> 
                 <article>
                     <img src="user.jpg" alt="blason"/>
-                    <h3>Béatrice</h3>
-                    <p>id:321</p>
+                    <h3>
+                        <?php echo $follower["alias"]?>
+                    </h3>
+                        <p><?php echo $follower["id"]?></p>
                 </article>
+                <?php } ?>
             </main>
         </div>
     </body>
