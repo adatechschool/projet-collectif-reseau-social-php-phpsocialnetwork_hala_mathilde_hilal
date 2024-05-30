@@ -1,3 +1,4 @@
+<?php include("config2.php")?>
 <!doctype html>
 <html lang="fr">
     <head>
@@ -55,7 +56,7 @@
 
 
                         //Etape 3 : Ouvrir une connexion avec la base de donnée.
-                        $mysqli = new mysqli("localhost", "root", "root", "socialnetwork_tests");
+                        //$mysqli = new mysqli("localhost", "root", "root", "socialnetwork_tests");
                         //Etape 4 : Petite sécurité
                         // pour éviter les injection sql : https://www.w3schools.com/sql/sql_injection.asp
                         $new_email = $mysqli->real_escape_string($new_email);

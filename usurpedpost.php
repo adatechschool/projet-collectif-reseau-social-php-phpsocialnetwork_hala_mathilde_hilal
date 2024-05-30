@@ -1,3 +1,4 @@
+<?php include("config2.php")?>
 <?php
 session_start();
 ?>
@@ -43,7 +44,7 @@ session_start();
                     /**
                      * BD
                      */
-                    $mysqli = new mysqli("localhost", "root", "root", "socialnetwork_tests");
+                    //$mysqli = new mysqli("localhost", "root", "root", "socialnetwork_tests");
                     /**
                      * Récupération de la liste des auteurs
                      */
