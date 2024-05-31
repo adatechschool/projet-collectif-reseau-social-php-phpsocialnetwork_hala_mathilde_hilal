@@ -48,11 +48,11 @@
                         // on ne fait ce qui suit que si un formulaire a été soumis.
                         // Etape 2: récupérer ce qu'il y a dans le formulaire @todo: c'est là que votre travaille se situe
                         // observez le résultat de cette ligne de débug (vous l'effacerez ensuite)
-                        echo "<pre>" . print_r($_POST, 1) . "</pre>";
+                        //echo "<pre>" . print_r($_POST, 1) . "</pre>";
                         // et complétez le code ci dessous en remplaçant les ???
-                        $new_email = $_POST['???'];
-                        $new_alias = $_POST['???'];
-                        $new_passwd = $_POST['???'];
+                        $new_email = $_POST['email'];
+                        $new_alias = $_POST['pseudo'];
+                        $new_passwd = $_POST['motpasse'];
 
 
                         //Etape 3 : Ouvrir une connexion avec la base de donnée.
