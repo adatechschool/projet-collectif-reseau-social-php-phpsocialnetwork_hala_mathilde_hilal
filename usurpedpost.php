@@ -56,7 +56,6 @@ session_start();
                         $listAuteurs[$user['id']] = $user['alias'];
                     }
 
-
                     /**
                      * TRAITEMENT DU FORMULAIRE
                      */
@@ -72,7 +71,6 @@ session_start();
                         // et complétez le code ci dessous en remplaçant les ???
                         $authorId = $_POST['auteur'];
                         $postContent = $_POST['message'];
-
 
                         //Etape 3 : Petite sécurité
                         // pour éviter les injection sql : https://www.w3schools.com/sql/sql_injection.asp

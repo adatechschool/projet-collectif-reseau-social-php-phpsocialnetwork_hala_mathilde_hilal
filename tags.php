@@ -38,7 +38,6 @@
             $tagId = intval($_GET['tag_id']);
             ?>
             
-
             <aside>
                 <?php
                 /**
@@ -71,8 +70,9 @@
                 $laQuestionEnSql = "
                     SELECT posts.content,
                     posts.created,
-                    users.alias as author_name,  
-                    count(likes.id) as like_number,  
+                    users.alias as author_name, 
+                    users.id as author_id,
+                    COUNT(likes.id) as like_number,  
                     GROUP_CONCAT(DISTINCT tags.label) AS taglist 
                     FROM posts_tags as filter 
                     JOIN posts ON posts.id=filter.post_id
@@ -82,7 +82,7 @@
                     LEFT JOIN likes      ON likes.post_id  = posts.id 
                     WHERE filter.tag_id = '$tagId' 
                     GROUP BY posts.id
-                    ORDER BY posts.created DESC  
+                    ORDER BY posts.created DESC 
                     ";
                 $lesInformations = $mysqli->query($laQuestionEnSql);
                 if ( ! $lesInformations)
@@ -102,7 +102,8 @@
                         <h3>
                             <time datetime='2020-02-01 11:12:13' ><?php echo $post['created'] ?></time>
                         </h3>
-                        <address><?php echo $post['author_name'] ?></address>
+                        <address><a href="wall.php?user_id=<?php echo $post['author_id'] ?>"><?php echo $post['author_name'] ?></a></address>
+
                         <div>
                           <?php $cleaned_content = str_replace('#', '', $post['content']);
                            echo "<p>" . htmlspecialchars($cleaned_content) . "</p>";?>

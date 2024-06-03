@@ -9,7 +9,7 @@
     </head>
     <body>
         <header>
-        <a href='admin.php'><img src="resoc.jpg" alt="Logo de notre réseau social"/>
+        <a href='admin.php'><img src="resoc.jpg" alt="Logo de notre réseau social"/></a>
             <nav id="menu">
                 <a href="news.php">Actualités</a>
                 <a href="wall.php?user_id=5">Mur</a>
@@ -70,6 +70,7 @@
                     SELECT posts.content,
                     posts.created,
                     users.alias as author_name,  
+                    users.id as author_id,
                     count(likes.id) as like_number,  
                     GROUP_CONCAT(DISTINCT tags.label) AS taglist 
                     FROM followers 
@@ -99,12 +100,10 @@
                     <h3>
                       <time datetime='2020-02-01 11:12:13' ><?php echo $posts['created']?></time>
                     </h3>
-                    <address><?php echo $posts['author_name']?></address>
+                    <address><a href="wall.php?user_id=<?php echo $posts['author_id'] ?>"><?php echo $posts['author_name']?></a></address>
                     <div>
                         <?php $cleaned_content = str_replace('#', '', $posts['content']);
-    
-                        echo "<p>" . htmlspecialchars($cleaned_content) . "</p>";?>
-                        
+                        echo "<p>" . htmlspecialchars($cleaned_content) . "</p>";?> 
                     </div>                                            
                     <footer>
                             <small>♥<?php echo $posts['like_number'] ?> </small>

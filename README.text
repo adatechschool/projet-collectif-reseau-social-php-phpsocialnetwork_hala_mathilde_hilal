@@ -33,7 +33,11 @@ Bon à savoir :
     Apache Port = 8886
     MySQL Port = 8889
 
-Issues (Mathilde) : 
+Problèmes : 
 1 - MAMP PRO prend port localhost:8888 donc bien supprimer pour installer MAMP classique!
     => sinon je dois changer le port et je n'ai plus accès au phpMyAdmin => Merci de vérifier les valeurs host.
-2 - 
+2 - page d'accueil 
+3 - file login: l.59 et l.1 
+    $mysqli = new mysqli("localhost", "root", "root", "socialnetwork_tests");
+
+link.php => mettre plusieurs commandes sur un même fichier

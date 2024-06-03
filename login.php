@@ -56,7 +56,6 @@ session_start();
                         $emailAVerifier = $_POST['email'];
                         $passwdAVerifier = $_POST['motpasse'];
 
-
                         //Etape 3 : Ouvrir une connexion avec la base de donnée.
                         //$mysqli = new mysqli("localhost", "root", "root", "socialnetwork_tests");
                         //Etape 4 : Petite sécurité
@@ -65,7 +64,7 @@ session_start();
                         $passwdAVerifier = $mysqli->real_escape_string($passwdAVerifier);
                         // on crypte le mot de passe pour éviter d'exposer notre utilisatrice en cas d'intrusion dans nos systèmes
                         $passwdAVerifier = md5($passwdAVerifier);
-                        // NB: md5 est pédagogique mais n'est pas recommandée pour une vraies sécurité
+                        // NB: md5 est pédagogique mais n'est pas recommandée pour une vraie sécurité
                         //Etape 5 : construction de la requete
                         $lInstructionSql = "SELECT * "
                                 . "FROM users "
