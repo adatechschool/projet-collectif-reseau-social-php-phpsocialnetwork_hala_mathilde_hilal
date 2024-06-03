@@ -83,7 +83,6 @@ session_start();
                                 . $authorId . ", "
                                 . "'" . $postContent . "', "
                                 . "NOW(), "
-                               
                                 . "NULL);"
                                 ;
                             //echo $lInstructionSql;

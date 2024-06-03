@@ -52,7 +52,7 @@
                 <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
-            <p>Sur cette page vous trouverez tous les message de l'utilisatrice : <?php include("link_user.php") ?> </p>
+            <p>Sur cette page vous trouverez tous les message de l'utilisatrice : <?php echo $user["alias"] ?> </p>
                 </section>
             </aside>
             <main>
@@ -61,12 +61,9 @@
                  * Etape 3: récupérer tous les messages de l'utilisatrice
                  */
                 $laQuestionEnSql = "
-                    SELECT posts.content, 
-                    posts.created, 
-                    users.alias as author_name, 
-                    users.id as author_id,
-                    COUNT(likes.id) as like_number, 
-                    GROUP_CONCAT(DISTINCT tags.label) AS taglist 
+                    SELECT posts.content, posts.created, users.alias as author_name,users.id as author_id, 
+ 
+                    COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist 
                     FROM posts
                     JOIN users ON users.id=posts.user_id
                     LEFT JOIN posts_tags ON posts.id = posts_tags.post_id  
