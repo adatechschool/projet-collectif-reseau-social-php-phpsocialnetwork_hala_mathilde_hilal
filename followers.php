@@ -17,7 +17,7 @@ $userId = intval($_SESSION['connected_id']) ?>
     </head>
     <body>
         <header>
-        <a href='admin.php'><img src="resoc.jpg" alt="Logo de notre réseau social"/></a> 
+        <a href='login.php'><img src="resoc.jpg" alt="Logo de notre réseau social"/></a> 
             <nav id="menu">
                 <a href="news.php">Actualités</a>
                 <a href="wall.php?user_id=<?php echo $userId; ?>">Mur</a>
@@ -27,9 +27,11 @@ $userId = intval($_SESSION['connected_id']) ?>
             <nav id="user">
                 <a href="#">Profil</a>
                 <ul>
-                    <li><a href="settings.php?user_id=<?php echo $userId; ?>">Paramètres</a></li>
-                    <li><a href="followers.php?user_id=<?php echo $userId; ?>">Mes suiveurs</a></li>
-                    <li><a href="subscriptions.php?user_id=<?php echo $userId; ?>">Mes abonnements</a></li>
+                    <li><a href="login.php?user_id=<?php echo $userId; ?>">Login</a></li>
+                    <li><a href="settings.php?user_id=5">Paramètres</a></li>
+                    <li><a href="followers.php?user_id=5">Mes suiveurs</a></li>
+                    <li><a href="subscriptions.php?user_id=5">Mes abonnements</a></li>
+                    
                 </ul>
             </nav>
         </header>
