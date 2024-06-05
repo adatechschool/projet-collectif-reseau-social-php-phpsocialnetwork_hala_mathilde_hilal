@@ -86,7 +86,7 @@ $userId = intval($_SESSION['connected_id']);?>
                     LEFT JOIN likes      ON likes.post_id  = posts.id 
                     GROUP BY posts.id
                     ORDER BY posts.created DESC  
-                    LIMIT 5
+                    LIMIT 15
                     ";
                 $lesInformations = $mysqli->query($laQuestionEnSql);
                 // Vérification
@@ -116,7 +116,7 @@ $userId = intval($_SESSION['connected_id']);?>
                         <h3>
                             <time><?php echo $post['created'] ?></time>
                         </h3>
-                        <address><a href="wall.php?user_id=<?php echo $post['author_id']?>"><?php echo $post['author_name'] ?></a></address>
+                        <address><a href="wall.php?user_id=<?php echo $post['author_id']; ?>"><?php echo htmlspecialchars($post['author_name']); ?></a></address>
                         <div>
                             <!-- ci-dessous on enleve le caractere # du text( content) -->
                        <?php $cleaned_content = str_replace('#', '', $post['content']);

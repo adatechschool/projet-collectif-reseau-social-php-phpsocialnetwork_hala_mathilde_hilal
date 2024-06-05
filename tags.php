@@ -28,26 +28,32 @@ $userId = intval($_SESSION['connected_id']);?>
                 <a href="#">Profil</a>
                 <ul>
                     <li><a href="login.php?user_id=<?php echo $userId; ?>">Login</a></li>
-                    <li><a href="settings.php?user_id=5">Paramètres</a></li>
-                    <li><a href="followers.php?user_id=5">Mes suiveurs</a></li>
-                    <li><a href="subscriptions.php?user_id=5">Mes abonnements</a></li>
-                    
+                    <li><a href="settings.php?user_id=<?php echo $userId; ?>">Paramètres</a></li>
+                    <li><a href="followers.php?user_id=<?php echo $userId; ?>">Mes suiveurs</a></li>
+                    <li><a href="subscriptions.php?user_id=<?php echo $userId; ?>">Mes abonnements</a></li>
                 </ul>
 
-            </nav>
-        </header>
-        <div id="wrapper">
-            <?php
-            /**
-             * Cette page est similaire à wall.php ou feed.php 
-             * mais elle porte sur les mots-clés (tags)
-             */
-            /**
-             * Etape 1: Le mur concerne un mot-clé en particulier
-             */
-            $tagId = intval($_GET['tag_id']);
-            ?>
-            
+                 </nav>
+                        </header>
+                        <div id="wrapper">
+                            <?php
+                            /**
+                             * Cette page est similaire à wall.php ou feed.php 
+                             * mais elle porte sur les mots-clés (tags)
+                             */
+                            /**
+                             * Etape 1: Le mur concerne un mot-clé en particulier
+                             */
+                            $tagId = intval($_GET['tag_id']);
+                            $laQuestionEnSql = "SELECT * FROM tags";
+                $lesInformations = $mysqli->query($laQuestionEnSql);
+
+                $listAuteurs = array();
+                while ($tag = $lesInformations->fetch_assoc()) {
+                    $listAuteurs[$tag['id']] = $tag['label'];
+                }
+                            ?>
+                            
             <aside>
                 <?php
                 /**
@@ -69,6 +75,15 @@ $userId = intval($_SESSION['connected_id']);?>
                         le mot-clé <?php echo $tag["label"]?>
                         (n° <?php echo $tagId ?>)
                     </p>
+                    <dd>
+  <select name='tag' id='tag-select' onchange='location.href=this.value'>
+    <option value=''>Choisissez un mot-clé</option>
+    <?php
+      foreach ($listAuteurs as $id => $label)
+        echo "<option value='tags.php?tag_id=$id' " . ($id == $tagId ? "selected" : "") . ">$label</option>";
+    ?>
+  </select>
+</dd>
 
                 </section>
             </aside>
@@ -112,7 +127,7 @@ $userId = intval($_SESSION['connected_id']);?>
                         <h3>
                             <time datetime='2020-02-01 11:12:13' ><?php echo $post['created'] ?></time>
                         </h3>
-                        <address><a href="wall.php?user_id=<?php echo $post['author_id']?>"><?php echo $post['author_name'] ?></a></address>
+                        <address><a href="wall.php?author_id=<?php echo $post['author_id']?>"><?php echo $post['author_name'] ?></a></address>
                         <div>
                           <?php $cleaned_content = str_replace('#', '', $post['content']);
                            echo "<p>" . htmlspecialchars($cleaned_content) . "</p>";?>

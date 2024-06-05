@@ -50,10 +50,7 @@ $userId = intval($_SESSION['connected_id']);?>
                     <h2>Poster un message</h2>
                     <?php
                     /**
-                     * BD
-                     */
-                    //$mysqli = new mysqli("localhost", "root", "root", "socialnetwork_tests");
-                    /**
+        
                      * Récupération de la liste des auteurs
                      */
                     $listAuteurs = [];
