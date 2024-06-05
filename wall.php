@@ -8,9 +8,11 @@ if (!isset($_SESSION['connected_id'])) {
     exit();
 }
 
+// Get the user ID of the logged in user
 // Récupère l'ID de l'utilisateur connecté
 $loggedInUserId = intval($_SESSION['connected_id']);
 
+// Get the user ID from the URL or default to the logged in user
 // Récupère l'ID de l'utilisateur du mur ou utilise l'ID de l'utilisateur connecté par défaut
 $wallUserId = isset($_GET['user_id']) ? intval($_GET['user_id']) : $loggedInUserId;
 
@@ -157,7 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['like'])) {
             LEFT JOIN posts_tags ON posts.id = posts_tags.post_id
             LEFT JOIN tags ON posts_tags.tag_id = tags.id
             LEFT JOIN likes ON likes.post_id = posts.id
-            WHERE posts.wall_id = '$wallUserId'
+            WHERE posts.wall_id = '$wallUserId' OR posts.user_id  = '$wallUserId'
             GROUP BY posts.id
             ORDER BY posts.created DESC
         ";
