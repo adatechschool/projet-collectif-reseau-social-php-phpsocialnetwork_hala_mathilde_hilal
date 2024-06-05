@@ -127,7 +127,7 @@ $userId = intval($_SESSION['connected_id']);?>
                         <h3>
                             <time datetime='2020-02-01 11:12:13' ><?php echo $post['created'] ?></time>
                         </h3>
-                        <address><a href="wall.php?author_id=<?php echo $post['author_id']?>"><?php echo $post['author_name'] ?></a></address>
+                        <address><a href="wall.php?user_id=<?php echo $post['author_id']?>"><?php echo $post['author_name'] ?></a></address>
                         <div>
                           <?php $cleaned_content = str_replace('#', '', $post['content']);
                            echo "<p>" . htmlspecialchars($cleaned_content) . "</p>";?>
