@@ -1,4 +1,173 @@
-body{
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.sky {
+    background: linear-gradient(to bottom, rgba(0, 102, 204, 1), rgba(135, 206, 250, 1), rgba(240, 255, 255, 1));
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Cloud styles and animations */
+.cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 82px;
+    opacity: 0.8;
+}
+
+.cloud::before, .cloud::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 60px;
+}
+
+.cloud::before {
+    top: -20px;
+    left: 20px;
+    width: 60px;
+    height: 40px;
+}
+
+.cloud::after {
+    top: 10px;
+    left: 60px;
+    width: 80px;
+    height: 50px;
+}
+
+.cloud.large {
+    width: 200px;
+    height: 120px;
+}
+
+.cloud.large::before {
+    top: -40px;
+    left: 50px;
+    width: 120px;
+    height: 80px;
+}
+
+.cloud.large::after {
+    top: 30px;
+    left: 100px;
+    width: 140px;
+    height: 90px;
+}
+
+/* Positioning the clouds */
+.cloud1 { top: 3%; left: -10%; }
+.cloud2 { top: 7%; left: -15%; }
+.cloud3 { top: 19%; left: -30%; }
+.cloud4 { top: 25%; left: -10%; }
+.cloud5 { top: 50%; left: -15%; }
+.cloud6 { top: 60%; left: -25%; }
+.cloud7 { top: 65%; left: -21%; }
+.cloud8 { top: 75%; left: -30%; }
+.cloud9 { top: 80%; left: -30%; }
+.cloud10 { top: 90%; left: -10%; }
+
+/* Adding animation to clouds */
+@keyframes moveClouds {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(45vw); /* Stop clouds at the middle of the viewport */
+    }
+    100% {
+        transform: translateX(50vw); /* Keep clouds at the middle of the viewport */
+    }
+}
+
+.cloud {
+    animation: moveClouds 10s linear infinite;
+}
+
+.cloud5 {
+    animation: moveCloud5 10s linear infinite;
+}
+
+/* Text animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.title {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 70px;
+    opacity: 0;
+    animation: fadeIn 5s forwards;
+    text-align: center;
+    font-weight: 300; 
+}
+
+.login-form {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    font-family: 'YourFontFamily', sans-serif; /* Utilisez la police importée */
+}
+
+.login-form label {
+    font-size: 1.5em; /* Plus gros texte */
+    margin-bottom: 10px;
+    display: block;
+}
+
+.login-form input {
+    font-size: 1.2em; /* Taille de texte des inputs */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.login-form button {
+    font-size: 1.2em; /* Taille de texte du bouton */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #7df76a;
+    color: white;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #7df76a;
+}
+
+/* Header styles */
+body>header {
+    background-color: #fff;
+    display: flex;
+    width: 80em;
+    margin: 0 auto 2em auto;
+    padding: 0;
+}
+
+body {
     background-color: #003;
     font-family: Arial;
 }
@@ -12,8 +181,8 @@ body>header{
     width:80em;
     margin:0 auto 2em auto;    
     padding:0;
-
 }
+
 body>header img{
     height:5em;
 }
@@ -66,7 +235,6 @@ body>header #user ul li a{
 body>header #user:hover ul{
     display:block;
 }
-
 
 #wrapper{
     display:flex;    
@@ -130,7 +298,6 @@ body>header #user:hover ul{
 #wrapper.admin nav{text-align: right;}
 #wrapper.admin article{border:1px solid #ddd;border-radius: 1em;padding:1em;margin:1em;}
 #wrapper.admin article p{float:left;margin:0;}
-
 
 .parameters dl dt{float:left;font-weight: bold;line-height: 1.5em;}
 .parameters dl dd{margin-left:15em;line-height: 1.5em;}
